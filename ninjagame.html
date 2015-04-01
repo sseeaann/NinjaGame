@@ -1,0 +1,148 @@
+<html>
+<head>
+	<title>Character Game</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<style type="text/css">
+		p{
+			letter-spacing: 3px;
+			text-shadow: 0 0 15px red;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<p>Arrows to move | Spacebar to poof!</p>
+	<div id="character" style="position:absolute; top:0px; left:0px;"><img id="ninja" src="img/left1.png"></div>
+
+	<script>
+	
+	function changeImage(newSource)
+	{
+		document.getElementById('ninja').src = newSource;
+	}
+
+	function gameLoop()
+	{
+		$('#character').css("left", x+1);
+		$('#character').css("top", y+1);
+	}
+
+	setInterval(gameLoop, 150);
+
+	var x = 250;
+	var y = 100;
+	document.onkeydown = function(e)
+	{
+		console.log(e.keyCode, x, y);
+
+		if(e.keyCode == 37)
+		{	
+			
+			//move left
+			if(x <= 0){
+				x = 0;
+			}
+			else{
+				imageSource = document.getElementById('ninja').src;
+				if(imageSource == "file:///Users/sseeaann/ninja_game/img/left1.png")
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/left2.png');
+				} 
+				else if(imageSource == "file:///Users/sseeaann/ninja_game/img/left2.png")
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/left1.png');
+				} 
+				else 
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/left1.png');
+				}
+				x = x - 10;
+			}
+		}
+		else if(e.keyCode == 39)
+		{
+			//move right
+			if(x >= 500){
+				x = 500;
+			}
+			else{
+				imageSource = document.getElementById('ninja').src;
+				if(imageSource == "file:///Users/sseeaann/ninja_game/img/right1.png")
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/right2.png');
+				} 
+				else if(imageSource == "file:///Users/sseeaann/ninja_game/img/right2.png")
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/right1.png');
+				} 
+				else 
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/right1.png');
+				}
+				x = x + 10;
+			}
+		}
+		else if(e.keyCode == 38)
+		{
+			//move up
+			if(y <= 0){
+				y = 0;
+			}
+			else{
+				imageSource = document.getElementById('ninja').src;
+				if(imageSource == "file:///Users/sseeaann/ninja_game/img/top1.png")
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/top2.png');
+				} 
+				else if(imageSource == "file:///Users/sseeaann/ninja_game/img/top2.png")
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/top1.png');
+				} 
+				else 
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/top1.png');
+				}
+				y = y - 10;
+			}
+		}
+		else if(e.keyCode == 40)
+		{
+			//move down
+			if(y >= 500){
+				y = 500;
+			}
+			else{
+				imageSource = document.getElementById('ninja').src;
+				if(imageSource == "file:///Users/sseeaann/ninja_game/img/down1.png")
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/down2.png');
+				} 
+				else if(imageSource == "file:///Users/sseeaann/ninja_game/img/down2.png")
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/down1.png');
+				} 
+				else 
+				{
+					changeImage('file:///Users/sseeaann/ninja_game/img/down1.png');
+				}
+				y = y + 10;
+			}
+		}
+		if(e.keyCode == 32)
+		{
+			imageSource = document.getElementById('ninja').src;
+			changeImage('file:///Users/sseeaann/ninja_game/img/poof.gif');
+		}
+		else if(imageSource == 'file:///Users/sseeaann/ninja_game/img/poof.gif')
+		{
+			x = Math.floor(Math.random() * 500);
+			y = Math.floor(Math.random() * 500);
+			//changeImage('file:///Users/sseeaann/ninja_game/img/left2.png');
+		}
+
+	}
+
+	</script>
+
+</body>
+</html>
